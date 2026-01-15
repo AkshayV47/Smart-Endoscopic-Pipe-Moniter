@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PipeMedic - Smart Pipe Inspection & Repair</title>
+    <meta name="description" content="PipeMedic: Smart pipeline inspection and repair device with ESP32-CAM and sealant dispenser. Book service or buy now." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a'
+              }
+            },
+            fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <style>
+      .glass { backdrop-filter: saturate(150%) blur(10px); background: rgba(255,255,255,0.7);} 
+    </style>
+  </head>
+  <body class="font-sans text-slate-800 bg-gradient-to-b from-slate-50 to-white min-h-screen flex flex-col">
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-600 text-white grid place-items-center font-extrabold">PM</div>
+          <div>
+            <div class="text-xl font-extrabold tracking-tight">PipeMedic</div>
+            <div class="text-xs text-slate-500 -mt-1">Inspect. Unclog. Seal.</div>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#features" class="hover:text-brand-600">Features</a>
+          <a href="#store" class="hover:text-brand-600">Buy</a>
+          <a href="#book" class="hover:text-brand-600">Book Service</a>
+          <a href="#contact" class="hover:text-brand-600">Contact</a>
+        </nav>
+        <a href="#book" class="inline-flex items-center gap-2 bg-brand-600 text-white px-4 py-2 rounded-lg shadow hover:bg-brand-700 text-sm">Book Service</a>
+      </div>
+    </header>
+
+    <main id="home" class="flex-1">
+      <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-brand-50 via-white to-white"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-slate-900">Smart pipeline inspection & repair with <span class="text-brand-700">PipeMedic</span></h1>
+            <p class="mt-4 text-lg text-slate-600">A compact device using ESP32-CAM and servo-controlled dispenser to navigate bends, clear blockages, and seal cracks from inside your pipes.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#store" class="bg-slate-900 text-white px-5 py-3 rounded-lg hover:bg-slate-800">Buy Now</a>
+              <a href="#features" class="px-5 py-3 rounded-lg border border-slate-300 hover:border-slate-400">Learn More</a>
+            </div>
+            <div class="mt-6 grid grid-cols-3 gap-6 text-center">
+              <div class="p-4 rounded-lg glass">
+                <div class="text-2xl font-bold text-brand-700">ESP32-CAM</div>
+                <div class="text-xs text-slate-500">Live monitoring</div>
+              </div>
+              <div class="p-4 rounded-lg glass">
+                <div class="text-2xl font-bold text-brand-700">Servo</div>
+                <div class="text-xs text-slate-500">Precision control</div>
+              </div>
+              <div class="p-4 rounded-lg glass">
+                <div class="text-2xl font-bold text-brand-700">Seal & Clear</div>
+                <div class="text-xs text-slate-500">Cracks & clogs</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200">
+              <img alt="PipeMedic device" src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover" />
+            </div>
+            <div class="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg border border-slate-200 p-4 w-64">
+              <div class="text-sm font-semibold">Live Feed</div>
+              <div class="mt-2 h-24 rounded-lg bg-slate-100 grid place-items-center text-slate-500 text-xs">ESP32-CAM stream</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl font-bold">Why PipeMedic</h2>
+          <p class="mt-2 text-slate-600">Designed to navigate household pipe bends, identify issues, dispense sealant precisely, and clear drainage using pipe-safe chemicals.</p>
+          <div class="mt-8 grid md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-xl border border-slate-200 hover:shadow-sm transition">
+              <div class="font-semibold">Bend Navigation</div>
+              <p class="mt-1 text-sm text-slate-600">Flexible tube with servo guidance to reach tight corners.</p>
+            </div>
+            <div class="p-6 rounded-xl border border-slate-200 hover:shadow-sm transition">
+              <div class="font-semibold">Live Monitoring</div>
+              <p class="mt-1 text-sm text-slate-600">ESP32-CAM provides real-time visuals for accurate diagnosis.</p>
+            </div>
+            <div class="p-6 rounded-xl border border-slate-200 hover:shadow-sm transition">
+              <div class="font-semibold">Seal & Disperse</div>
+              <p class="mt-1 text-sm text-slate-600">On-device dispenser releases sealant or cleaning agents.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="store" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between">
+            <h2 class="text-3xl font-bold">Buy PipeMedic</h2>
+            <div class="text-sm text-slate-500">Ships in 3-5 days</div>
+          </div>
+          <div class="mt-8 grid lg:grid-cols-2 gap-8">
+            <div class="p-6 rounded-2xl bg-white border border-slate-200">
+              <img src="pipemedic.jpg" alt="PipeMedic Kit" class="rounded-lg aspect-video object-contain w-full" />
+              <div class="mt-4 flex items-start justify-between">
+                <div>
+                  <div class="text-xl font-semibold">PipeMedic Kit</div>
+                  <div class="text-sm text-slate-600">ESP32-CAM, servo unit, sealant dispenser, tube</div>
+                </div>
+                <div class="text-2xl font-bold text-brand-700">₹7,999</div>
+              </div>
+              <button id="addToCartBtn" class="mt-4 w-full bg-brand-600 text-white py-3 rounded-lg hover:bg-brand-700">Add to Cart</button>
+            </div>
+            <div class="p-6 rounded-2xl bg-white border border-slate-200">
+              <div class="text-xl font-semibold">Checkout</div>
+              <form id="orderForm" class="mt-4 grid grid-cols-1 gap-4">
+                <input required name="name" placeholder="Full Name" class="border rounded-lg px-4 py-3" />
+                <input required type="email" name="email" placeholder="Email" class="border rounded-lg px-4 py-3" />
+                <input required name="phone" placeholder="Phone" class="border rounded-lg px-4 py-3" />
+                <input required name="address" placeholder="Shipping Address" class="border rounded-lg px-4 py-3" />
+                <div class="grid grid-cols-2 gap-3">
+                  <input required name="city" placeholder="City" class="border rounded-lg px-4 py-3" />
+                  <input required name="pincode" placeholder="Pincode" class="border rounded-lg px-4 py-3" />
+                </div>
+                <button class="bg-slate-900 text-white py-3 rounded-lg hover:bg-slate-800">Place Order</button>
+                <p id="orderMessage" class="text-sm"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="book" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl font-bold">Book a Service</h2>
+          <p class="mt-2 text-slate-600">Tell us your problem. Our technician will reach you.</p>
+          <form id="bookingForm" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input required name="name" placeholder="Full Name" class="border rounded-lg px-4 py-3" />
+            <input required type="email" name="email" placeholder="Email" class="border rounded-lg px-4 py-3" />
+            <input required name="phone" placeholder="Phone" class="border rounded-lg px-4 py-3 md:col-span-2" />
+            <input required name="address" placeholder="Address" class="border rounded-lg px-4 py-3 md:col-span-2" />
+            <select required name="issueType" class="border rounded-lg px-4 py-3">
+              <option value="Blockage">Blockage</option>
+              <option value="Crack/Leak">Crack / Leak</option>
+              <option value="Inspection">Inspection</option>
+            </select>
+            <input required name="preferredDate" type="date" class="border rounded-lg px-4 py-3" />
+            <textarea required name="description" placeholder="Describe the issue" rows="4" class="border rounded-lg px-4 py-3 md:col-span-2"></textarea>
+            <button class="bg-brand-600 text-white py-3 rounded-lg hover:bg-brand-700 md:col-span-2">Submit Booking</button>
+            <p id="bookingMessage" class="text-sm md:col-span-2"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="contact" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl font-bold">Contact</h2>
+          <div class="mt-4 text-slate-600">
+            <div>Email: support@pipemedic.io</div>
+            <div>Phone: +91 6374139935</div>
+            <div>Hours: 9:00–18:00, Mon–Sat</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div>© <span id="year"></span> PipeMedic. All rights reserved.</div>
+        <div class="flex items-center gap-4">
+          <a href="#features" class="hover:text-brand-600">Features</a>
+          <a href="#store" class="hover:text-brand-600">Buy</a>
+          <a href="#book" class="hover:text-brand-600">Book Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      let cartQty = 0;
+      const addBtn = document.getElementById('addToCartBtn');
+      if (addBtn) addBtn.addEventListener('click', () => {
+        cartQty = 1; // single-product store
+        addBtn.textContent = 'Added';
+        addBtn.classList.add('bg-brand-700');
+      });
+
+      async function submitJson(formEl, url, messageEl) {
+        const data = Object.fromEntries(new FormData(formEl).entries());
+        messageEl.textContent = '';
+        messageEl.className = 'text-sm';
+        try {
+          const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          const payload = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(payload.message || 'Request failed');
+          messageEl.textContent = 'Success! We will contact you shortly.';
+          messageEl.classList.add('text-green-600');
+          formEl.reset();
+        } catch (e) {
+          messageEl.textContent = e.message || 'Something went wrong';
+          messageEl.classList.add('text-red-600');
+        }
+      }
+
+      const bookingForm = document.getElementById('bookingForm');
+      const bookingMessage = document.getElementById('bookingMessage');
+      bookingForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitJson(bookingForm, (window.BACKEND_URL || 'http://localhost:4000') + '/api/bookings', bookingMessage);
+      });
+
+      const orderForm = document.getElementById('orderForm');
+      const orderMessage = document.getElementById('orderMessage');
+      orderForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(orderForm).entries());
+        const withCart = { ...data, items: [{ sku: 'PIPEMEDIC-KIT', name: 'PipeMedic Kit', qty: 1, price: 7999 }] };
+        fetch((window.BACKEND_URL || 'http://localhost:4000') + '/api/orders', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(withCart)
+        })
+        .then(async r => ({ ok: r.ok, body: await r.json().catch(()=>({})) }))
+        .then(({ ok, body }) => {
+          if (!ok) throw new Error(body.message || 'Order failed');
+          orderMessage.textContent = 'Order placed! Check your email for confirmation.';
+          orderMessage.className = 'text-sm text-green-600';
+          orderForm.reset();
+        })
+        .catch(err => {
+          orderMessage.textContent = err.message || 'Something went wrong';
+          orderMessage.className = 'text-sm text-red-600';
+        });
+      });
+    </script>
+  </body>
+  </html>
+
+
